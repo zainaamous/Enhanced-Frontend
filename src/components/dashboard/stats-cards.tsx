@@ -8,10 +8,11 @@ import {
   Database,
   Search,
   TrendingUp,
-  Clock,
+  TrendingDown,
   Users,
   Zap,
-  Activity
+  Activity,
+  type LucideIcon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -23,7 +24,7 @@ interface StatCardProps {
     type: "increase" | "decrease"
     period: string
   }
-  icon: React.ComponentType<{ className?: string }>
+  icon: LucideIcon
   description?: string
   badge?: string
   className?: string
@@ -44,9 +45,12 @@ export function StatCard({
       className
     )}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium text-muted-foreground">
-          {title}
-        </CardTitle>
+        <div className="flex items-center space-x-2">
+          <CardTitle className="text-sm font-medium text-foreground">
+            {title}
+          </CardTitle>
+          {badge && <Badge variant="secondary">{badge}</Badge>}
+        </div>
         <Icon className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
@@ -58,14 +62,11 @@ export function StatCard({
         )}
         {change && (
           <div className="flex items-center mt-2">
-            <TrendingUp 
-              className={cn(
-                "h-3 w-3 mr-1",
-                change.type === "increase" 
-                  ? "text-green-500" 
-                  : "text-red-500 rotate-180"
-              )} 
-            />
+            {change.type === "increase" ? (
+              <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
+            ) : (
+              <TrendingDown className="h-3 w-3 mr-1 text-red-500" />
+            )}
             <span 
               className={cn(
                 "text-xs font-medium",
@@ -145,7 +146,15 @@ export function StatsCards({ className }: StatsCardsProps) {
   return (
     <div className={cn("grid gap-4 md:grid-cols-2 lg:grid-cols-3", className)}>
       {stats.map((stat, index) => (
-        <StatCard key={index} {...stat} />
+        <StatCard 
+          key={index}
+          title={stat.title}
+          value={stat.value}
+          change={stat.change}
+          icon={stat.icon}
+          description={stat.description}
+          badge={stat.badge}
+        />
       ))}
     </div>
   )
