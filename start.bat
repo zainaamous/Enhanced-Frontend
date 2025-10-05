@@ -1,0 +1,9 @@
+@echo off
+echo Starting YOUMNA AI Dashboard...
+echo.
+echo Installing dependencies...
+call npm install
+echo.
+echo Starting development server on port 3000...
+call npm run dev
+pause

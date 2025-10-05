@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* YoumnaExecAI Design System - Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    
+    /* Primary: Blue 600 (#2563EB) */
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary: Gray 50 (#F9FAFB) */
+    --secondary: 210 20% 98%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    /* Muted: Gray 100 (#F3F4F6) */
+    --muted: 214.3 31.8% 96.5%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    /* Accent: Gray 100 */
+    --accent: 214.3 31.8% 96.5%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    /* Status Colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142.1 76.2% 36.3%;
+    --warning: 37.7 92.1% 50.2%;
+    --info: 221.2 83.2% 53.3%;
+    
+    /* Borders: Gray 200 (#E5E7EB) */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    
+    /* Ring: Primary color */
+    --ring: 217.2 91.2% 59.8%;
+    
+    /* Border Radius: Smaller, more professional */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* YoumnaExecAI Design System - Dark Mode */
+    /* Background: Slate 900 (#0F172A) */
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    
+    /* Card: Slate 900 */
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Primary: Blue 500 (#3B82F6) */
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary: Slate 800 (#1E293B) */
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Muted: Slate 700 (#334155) */
+    --muted: 215 20.2% 65.1%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    
+    /* Accent: Slate 700 */
+    --accent: 215 20.2% 65.1%;
+    --accent-foreground: 210 40% 98%;
+    
+    /* Status Colors - Same as light mode */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142.1 76.2% 36.3%;
+    --warning: 37.7 92.1% 50.2%;
+    --info: 221.2 83.2% 53.3%;
+    
+    /* Borders: Slate 700 */
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    
+    --ring: 221.2 83.2% 53.3%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Enhanced YoumnaExecAI Design System Components */
+  
+  /* Primary button - solid blue with enhanced gradients */
+  .youmna-gradient {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+  }
+  
+  .youmna-gradient:hover {
+    background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+    box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.4);
+    transform: translateY(-1px);
+  }
+  
+  .youmna-gradient-subtle {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(29, 78, 216, 0.05) 100%);
+  }
+  
+  /* Text with primary color */
+  .youmna-gradient-text {
+    @apply text-primary;
+  }
+  
+  /* Enhanced professional shadows with depth */
+  .ai-glow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .ai-glow-soft {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .ai-glow-intense {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Enhanced ChatGPT-like message styling */
+  .chat-message {
+    @apply relative rounded-2xl p-4 shadow-sm border transition-all duration-300 hover:shadow-md;
+  }
+  
+  .chat-message.user {
+    @apply bg-gradient-to-br from-blue-600 to-blue-700 text-white ml-auto max-w-[80%] border-0 rounded-2xl rounded-br-md shadow-lg;
+  }
+  
+  .chat-message.assistant {
+    @apply bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 mr-auto max-w-[80%] border border-slate-200 dark:border-slate-700 rounded-2xl rounded-bl-md hover:shadow-md;
+  }
+
+  /* Enhanced message bubbles with better styling */
+  .message-bubble {
+    @apply relative rounded-2xl p-4 max-w-[80%] break-words transition-all duration-300;
+  }
+
+  .message-bubble.user {
+    @apply bg-gradient-to-br from-blue-600 to-blue-700 text-white ml-auto rounded-br-md shadow-lg hover:shadow-xl;
+  }
+
+  .message-bubble.assistant {
+    @apply bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 mr-auto rounded-bl-md border border-slate-200 dark:border-slate-700 hover:shadow-md;
+  }
+  
+  /* Enhanced typing indicator */
+  .typing-indicator {
+    @apply flex items-center space-x-1 text-slate-500 dark:text-slate-400;
+  }
+  
+  .typing-dot {
+    @apply w-2 h-2 bg-blue-500 rounded-full animate-bounce;
+  }
+  
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  
+  /* Enhanced scrollbars with better styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-slate-100 dark:bg-slate-800 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-600 rounded-full hover:bg-slate-400 dark:hover:bg-slate-500;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-500;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  }
+  
+  .dark .glass {
+    @apply bg-gray-900/80 border-gray-700/20;
+  }
+  
+  /* Message streaming animation */
+  .message-streaming {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  /* Enhanced button styles - Professional Blue */
+  .btn-youmna {
+    @apply bg-primary hover:bg-primary/90 text-white font-semibold px-5 py-2.5 rounded transition-all duration-150;
+  }
+  
+  .btn-youmna-outline {
+    @apply border border-primary text-primary hover:bg-primary/5 font-semibold px-5 py-2.5 rounded transition-all duration-150;
+  }
+  
+  /* Status indicators */
+  .status-online {
+    @apply bg-green-500;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+  }
+  
+  .status-offline {
+    @apply bg-gray-400;
+  }
+  
+  .status-error {
+    @apply bg-red-500;
+  }
+  
+  /* Loading skeleton */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded;
+  }
+  
+  /* Enhanced card styles - Professional */
+  .card-youmna {
+    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
+  }
+  
+  .card-youmna:hover {
+    @apply shadow-md;
+  }
+  
+  .card-interactive {
+    @apply card-youmna cursor-pointer;
+  }
+  
+  /* Message actions */
+  .message-actions {
+    @apply opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center space-x-1;
+  }
+  
+  /* Enhanced input styles */
+  .input-youmna {
+    @apply w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-youmna-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  /* Notification styles */
+  .notification {
+    @apply fixed top-4 right-4 z-50 max-w-sm w-full bg-card border border-border rounded-lg shadow-lg p-4 transform transition-all duration-300;
+  }
+  
+  .notification.success {
+    @apply border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/20;
+  }
+  
+  .notification.error {
+    @apply border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20;
+  }
+  
+  .notification.warning {
+    @apply border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-900/20;
+  }
+  
+  .notification.info {
+    @apply border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .chat-message {
+    @apply max-w-[95%];
+  }
+  
+  .message-actions {
+    @apply opacity-100;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .glass {
+    @apply bg-gray-900/80 border-gray-700/20;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
